@@ -1,0 +1,39 @@
+{
+  "name": "all-in-real-estate",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-google-maps/api": "^2.20.8",
+    "@tanstack/react-query": "^5.90.12",
+    "axios": "^1.13.2",
+    "framer-motion": "^10.16.0",
+    "i18next": "^23.7.0",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.556.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
+    "react-intersection-observer": "^9.16.0",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^7.9.6",
+    "react-toastify": "^11.0.5",
+    "socket.io-client": "^4.8.3",
+    "swiper": "^11.2.10"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "vite": "^5.0.8"
+  }
+}

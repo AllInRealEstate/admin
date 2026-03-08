@@ -1,0 +1,663 @@
+
+/* =========================================
+   LEADS HEADER — lh- prefixed, zero collisions
+   ========================================= */
+
+/* ── Wrapper ── */
+.lh-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* =========================================
+   ZONE A — TITLE ROW
+   ========================================= */
+.lh-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem 0.9rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.lh-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  /*font-family: 'Cinzel', serif;*/
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.lh-title-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.lh-title-meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #d1d5db;
+}
+
+.lh-title-meta-count {
+  font-weight: 700;
+  color: #d4af37;
+}
+
+/* =========================================
+   ZONE B — COMMAND BAR (Search + Actions)
+   ========================================= */
+.lh-command-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+/* Search */
+.lh-search {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex: 1;
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 9px;
+  padding: 0.6rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 0;
+}
+
+.lh-search:focus-within {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+  background: white;
+}
+
+.lh-search-icon {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.lh-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  width: 100%;
+  min-width: 0;
+  font-family: inherit;
+}
+
+.lh-search-input::placeholder {
+  color: #b0b7c3;
+}
+
+/* Action buttons */
+.lh-btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #d4af37;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.lh-btn-add:hover {
+  background: #b8962e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.lh-btn-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: white;
+  color: #374151;
+  border: 1.5px solid #e5e7eb;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.lh-btn-select:hover {
+  border-color: #d4af37;
+  color: #1a1a1a;
+  background: #fffbf0;
+}
+
+/* =========================================
+   ZONE B — SELECT MODE BAR
+   (replaces command bar when active)
+   ========================================= */
+.lh-select-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fffbf0;
+  border-left: 3px solid #d4af37;
+}
+
+.lh-btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: white;
+  color: #4b5563;
+  border: 1.5px solid #e5e7eb;
+  padding: 0.5rem 0.9rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.lh-btn-cancel:hover {
+  background: #f3f4f6;
+  color: #111;
+}
+
+.lh-select-divider {
+  width: 1px;
+  height: 20px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.lh-select-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.lh-select-count {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+.lh-btn-select-page {
+  background: none;
+  border: none;
+  color: #d4af37;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.lh-btn-select-page:hover { color: #b8962e; }
+
+.lh-select-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.lh-btn-bulk-assign {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1.5px solid #bfdbfe;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.lh-btn-bulk-assign:hover:not(:disabled) {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+.lh-btn-bulk-assign:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.lh-btn-bulk-delete {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1.5px solid #fca5a5;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.lh-btn-bulk-delete:hover:not(:disabled) {
+  background: #dc2626;
+  color: white;
+  border-color: #dc2626;
+}
+.lh-btn-bulk-delete:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Selection banners ── */
+.lh-banner {
+  padding: 0.65rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+}
+
+.lh-banner-page {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.lh-banner-db {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.lh-banner strong {
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+/* =========================================
+   ZONE C — STATUS TABS
+   ========================================= */
+.lh-tabs-row {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem 0;
+  gap: 0.4rem;
+  flex-wrap: wrap; /* wraps to 2 rows instead of scrolling */
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.lh-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6b7280;
+  transition: all 0.18s;
+  white-space: nowrap;
+  margin-bottom: 0.6rem;
+  font-family: inherit;
+}
+
+.lh-tab:hover {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+  color: #374151;
+}
+
+.lh-tab.active {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: white;
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.28);
+}
+
+.lh-tab-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.07);
+  color: inherit;
+  padding: 1px 7px;
+  border-radius: 10px;
+  transition: all 0.18s;
+}
+
+.lh-tab.active .lh-tab-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* =========================================
+   ZONE D — FILTERS
+   Collapsible on ALL screen sizes
+   ========================================= */
+.lh-filters-zone {
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Toggle — visible on ALL screens */
+.lh-filter-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  background: #fafafa;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  box-sizing: border-box;
+}
+.lh-filter-toggle:hover { background: #f3f4f6; }
+
+.lh-filter-toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.lh-filter-badge {
+  background: #d4af37;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lh-filter-arrow {
+  color: #9ca3af;
+  transition: transform 0.3s;
+}
+.lh-filter-arrow.open { transform: rotate(180deg); }
+
+/* Drawer — collapsed by default on ALL screens */
+.lh-filter-drawer {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.38s ease, opacity 0.3s;
+  opacity: 0;
+}
+.lh-filter-drawer.open {
+  max-height: 700px;
+  opacity: 1;
+}
+
+.lh-filters-inner {
+  padding: 1.25rem 1.5rem 1.4rem;
+  border-top: 1px solid #f0f0f0;
+  background: white;
+}
+
+.lh-section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #b0b7c3;
+  margin-bottom: 0.85rem;
+}
+.lh-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #f0f0f0;
+}
+
+/* Desktop: superadmin = 5 cols, non-superadmin = 4 cols */
+.lh-filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr 1fr 1fr;
+  gap: 0.85rem;
+  align-items: end;
+}
+.lh-filter-grid.no-assignee {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.lh-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.lh-filter-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.lh-filter-select,
+.lh-filter-date {
+  width: 100%;
+  padding: 0.55rem 2.2rem 0.55rem 0.85rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+  font-size: 0.85rem;
+  color: #374151;
+  font-weight: 500;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.18s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 0.9em;
+}
+.lh-filter-date {
+  padding-right: 0.85rem;
+  background-image: none;
+  cursor: text;
+}
+.lh-filter-select:hover,
+.lh-filter-date:hover { border-color: #d1d5db; background-color: white; }
+.lh-filter-select:focus,
+.lh-filter-date:focus {
+  border-color: #d4af37;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+.lh-filter-clear-wrap {
+  display: flex;
+  align-items: flex-end;
+}
+.lh-btn-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1.5px solid transparent;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.18s;
+  font-family: inherit;
+  white-space: nowrap;
+  width: 100%;
+  justify-content: center;
+}
+.lh-btn-clear:hover { background: #fee2e2; border-color: #fca5a5; }
+
+/* Mobile status dropdown — hidden on desktop */
+.lh-status-dropdown-wrap { display: none; }
+
+.lh-status-dropdown {
+  width: 100%;
+  padding: 0.65rem 2.2rem 0.65rem 0.9rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 9px;
+  background: #f9fafb;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.18s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1em;
+}
+.lh-status-dropdown:focus {
+  border-color: #d4af37;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+/* Tablet 768–1024px */
+@media (max-width: 1024px) {
+  .lh-filter-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .lh-assignee-group { grid-column: 1 / -1; }
+  .lh-filter-clear-wrap { grid-column: 3 / 4; align-self: flex-end; }
+
+  .lh-filter-grid.no-assignee {
+    grid-template-columns: 1fr 1fr;
+  }
+  .lh-filter-grid.no-assignee .lh-filter-clear-wrap {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile ≤ 768px */
+@media (max-width: 768px) {
+
+  .lh-title-row { padding: 0.9rem 1rem 0.75rem; }
+  .lh-title     { font-size: 1.15rem; }
+
+  .lh-command-bar { flex-wrap: wrap; padding: 0.75rem 1rem; gap: 0.6rem; }
+  .lh-search      { flex: 1 1 100%; order: 0; }
+  .lh-btn-add,
+  .lh-btn-select  { flex: 1; justify-content: center; order: 1; padding: 0.65rem 0.5rem; font-size: 0.85rem; }
+
+  .lh-select-bar     { flex-wrap: wrap; padding: 0.75rem 1rem; gap: 0.6rem; }
+  .lh-select-info    { order: 0; flex: 1 1 100%; }
+  .lh-select-actions { order: 1; width: 100%; }
+  .lh-btn-bulk-assign,
+  .lh-btn-bulk-delete { flex: 1; justify-content: center; }
+
+  /* Swap pill tabs for dropdown */
+  .lh-tabs-row             { display: none; }
+  .lh-status-dropdown-wrap {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    background: #fafafa;
+  }
+
+  .lh-filter-toggle { padding: 0.75rem 1rem; }
+  .lh-filters-inner { padding: 1rem; }
+  .lh-section-label { display: none; }
+
+  /*
+    SUPERADMIN mobile:
+    Row 1: Interest  | Priority
+    Row 2: Assigned To (full width)
+    Row 3: From      | To
+    Row 4: Clear All (full width)
+  */
+  .lh-filter-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .lh-assignee-group    { grid-column: 1 / -1; }
+  .lh-filter-clear-wrap { grid-column: 1 / -1; margin-top: 0.1rem; }
+
+  /*
+    NON-SUPERADMIN mobile:
+    Row 1: Interest | Priority
+    Row 2: From     | To       ← same row
+    Row 3: Clear All (full width)
+  */
+  .lh-filter-grid.no-assignee {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .lh-filter-grid.no-assignee .lh-filter-clear-wrap {
+    grid-column: 1 / -1;
+    margin-top: 0.1rem;
+  }
+}
+
+/* Small Mobile ≤ 480px */
+@media (max-width: 480px) {
+  .lh-title        { font-size: 1rem; }
+  .lh-title-meta   { font-size: 0.72rem; }
+  .lh-btn-add,
+  .lh-btn-select   { font-size: 0.8rem; min-height: 42px; }
+  .lh-select-count { font-size: 0.85rem; }
+}

@@ -1,0 +1,347 @@
+/* ================= PAGE WRAPPER ================= */
+.lead-details-page-wrapper {
+  /* Force the page to be exactly the viewport height */
+  height: 100vh; 
+  width: 100%;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  /* DISABLES MAIN PAGE SCROLL - Critical for "App" feel */
+  overflow: hidden; 
+}
+
+/* ================= PAGE CONTENT ================= */
+.lead-details-page-content {
+  /* Takes all remaining space after the header */
+  flex: 1; 
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  /* CRITICAL: Allows this flex child to shrink below its content size */
+  min-height: 0; 
+}
+
+.lead-details-container-new {
+  /* Fills the content area */
+  flex: 1; 
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  
+  /* ============================================================
+     DESKTOP LAYOUT: SIDE-BY-SIDE (DEFAULT)
+     Left Column (Info): Fixed 400px
+     Right Column (Chat): Fills remaining space (1fr)
+  ============================================================ */
+  display: grid;
+  grid-template-columns: 400px 1fr; 
+  grid-template-rows: 100%; /* Force grid to fill height */
+  gap: 1rem;
+  
+  /* CRITICAL: Prevents grid blowout */
+  min-height: 0; 
+  transition: all 0.3s ease; /* Smooth transition when toggling */
+}
+
+/* ================= TOGGLED STATE: ACTIVITY CLOSED ================= */
+.lead-details-container-new.activity-closed {
+  /* When closed, use single column */
+  grid-template-columns: 1fr;
+  max-width: 1000px; /* Optional: Constrain width so it's not too wide */
+  margin: 0 auto; /* Center it */
+}
+
+/* ================= LEFT COLUMN: INFO (Scrollable) ================= */
+.lead-details-content {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  /* Scroll ONLY inside this box if content is too long */
+  overflow-y: auto; 
+  height: 100%;
+}
+
+/* ================= RIGHT COLUMN: CHAT (Fixed + Scrollable Area) ================= */
+.activity-timeline-wrapper {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  /* Layout container shouldn't scroll, the internal list will */
+  overflow: hidden; 
+  height: 100%;
+}
+
+/* Make the Timeline component fill the wrapper */
+.activity-timeline-wrapper > * {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Important for nested flex scrolling */
+}
+
+/* ================= LOADING & ERROR STATES ================= */
+.lead-details-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #f8f9fa;
+}
+
+.spinner-large {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.lead-details-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.lead-details-error svg {
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.lead-details-error p {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.lead-details-error .btn-back {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.lead-details-error .btn-back:hover {
+  background-color: #bfa15f;
+}
+
+/* ================= DELETE MODAL ================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.modal-icon {
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.modal-content h2 {
+  margin: 0 0 0.5rem 0;
+  color: #1a1a1a;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.modal-content p {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-cancel {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #dee2e6;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #f8f9fa;
+}
+
+.btn-confirm-delete {
+  padding: 0.75rem 1.5rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-confirm-delete:hover {
+  background-color: #c82333;
+}
+
+.btn-confirm-delete:disabled {
+  background-color: #e99ca5;
+  cursor: not-allowed;
+}
+
+/* ================= RESPONSIVE (MOBILE & TABLET) ================= */
+@media (max-width: 1024px) {
+  /* Switch back to normal scrolling layout for mobile (STACKED) */
+  .lead-details-page-wrapper {
+    height: auto; 
+    min-height: 100vh;
+    overflow-y: auto; /* Enable page scrolling */
+  }
+
+  .lead-details-page-content {
+    flex: none;
+    height: auto;
+    padding: 0.625rem 1rem 1rem;
+  }
+
+  .lead-details-container-new {
+    display: flex; /* Stack vertically */
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .lead-details-content {
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Give the timeline a fixed height on mobile so it's usable */
+  .activity-timeline-wrapper {
+    height: 600px; 
+    flex: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .lead-details-page-content {
+    padding: 0.5rem;
+  }
+  
+  .activity-timeline-wrapper {
+    height: 500px;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .btn-cancel,
+  .btn-confirm-delete {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .lead-details-page-content {
+    padding: 0.375rem;
+  }
+
+  .activity-timeline-wrapper {
+    height: 450px;
+  }
+
+  .modal-content {
+    padding: 1.25rem;
+  }
+}
+
+/* ================= SWIPE & NAVIGATION ANIMATIONS (MOBILE ONLY) ================= */
+@media (max-width: 1024px) {
+  .slide-anim-fade {
+    animation: fade-in 0.25s ease-out forwards;
+  }
+
+  .slide-anim-left {
+    animation: slide-in-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  .slide-anim-right {
+    animation: slide-in-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-in-left {
+    from { 
+      opacity: 0; 
+      transform: translateX(50px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateX(0); 
+    }
+  }
+
+  @keyframes slide-in-right {
+    from { 
+      opacity: 0; 
+      transform: translateX(-50px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateX(0); 
+    }
+  }
+}

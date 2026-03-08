@@ -1,0 +1,231 @@
+/* =========================================
+   LEAD DASHBOARD PAGE
+   ========================================= */
+
+.lead-dashboard-page {
+  padding: 1rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   LEADS GRID
+   ========================================= */
+.leads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Loading States */
+.leads-loading,
+.leads-error,
+.no-leads {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.leads-error p,
+.no-leads p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Spinners */
+.spinner-large,
+.spinner-small {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-large {
+  width: 50px;
+  height: 50px;
+}
+
+.spinner-small {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scroll Trigger */
+.scroll-trigger {
+  width: 100%;
+  height: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================================
+   CONFIRMATION DIALOG
+   ========================================= */
+.confirmation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  padding: 1rem;
+}
+
+.confirmation-dialog {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: dialogFadeIn 0.2s ease-out;
+}
+
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.confirmation-dialog h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.confirmation-dialog p {
+  margin: 0 0 1.5rem 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.btn-confirm-cancel,
+.btn-confirm-delete {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-confirm-cancel {
+  background-color: white;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.btn-confirm-cancel:hover:not(:disabled) {
+  background-color: #f8f9fa;
+}
+
+.btn-confirm-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-confirm-delete:hover:not(:disabled) {
+  background-color: #c82333;
+}
+
+.btn-confirm-cancel:disabled,
+.btn-confirm-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .lead-dashboard-page {
+    padding: 1.25rem;
+  }
+
+  .leads-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .lead-dashboard-page {
+    padding: 1rem;
+  }
+
+  .leads-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .confirmation-dialog {
+    padding: 1.5rem;
+  }
+
+  .confirmation-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-confirm-cancel,
+  .btn-confirm-delete {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+/* Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .lead-dashboard-page {
+    padding: 0.75rem;
+  }
+
+  .leads-grid {
+    gap: 0.875rem;
+  }
+
+  .confirmation-dialog h3 {
+    font-size: 1.125rem;
+  }
+
+  .confirmation-dialog p {
+    font-size: 0.9rem;
+  }
+
+  .confirmation-dialog {
+    padding: 1.25rem;
+  }
+}

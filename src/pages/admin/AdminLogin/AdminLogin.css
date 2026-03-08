@@ -1,0 +1,141 @@
+/* src/pages/admin/AdminLogin.css */
+.admin-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1410 0%, #2c2416 100%);
+  padding: 2rem;
+}
+
+.admin-login-container {
+  background: rgba(26, 20, 16, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.admin-login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.admin-login-logo {
+  width: 80px;
+  height: auto;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.admin-login-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+}
+
+.admin-login-header p {
+  color: #c5bdb0;
+  font-size: 1rem;
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #faf8f3;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input {
+  background: rgba(250, 248, 243, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  color: #faf8f3;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Keep dark background and light text when focused/typing */
+.form-group input:focus {
+  outline: none;
+  border-color: #d4af37;
+  background: rgba(250, 248, 243, 0.08);
+  color: #faf8f3 !important;
+}
+
+/* Fix autofill styles */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group input:-webkit-autofill:active {
+  -webkit-text-fill-color: #faf8f3 !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(26, 20, 16, 0.95) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-group input::placeholder {
+  color: rgba(197, 189, 176, 0.5);
+}
+
+.btn-login {
+  background: linear-gradient(135deg, #d4af37 0%, #f4e5b8 100%);
+  color: #1a1410;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+}
+
+.btn-login:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.btn-login:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-login-footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: #888;
+  font-size: 0.75rem;
+}
+
+
+/* This section controls the input field when it is focused/selected */
+.admin-login-form .form-group input:focus {
+  outline: none;
+  border-color: #d4af37;
+  
+  /* <--- CHANGE THE VALUE OF THIS LINE: */
+  background: rgba(250, 248, 243, 0.08); 
+  
+  color: #faf8f3 !important; 
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+}

@@ -1,0 +1,595 @@
+/* ============================================================
+   ADMIN REVIEWS - SIMPLIFIED 5-COLUMN TABLE
+   ============================================================ */
+
+/* ---------------------------
+   PAGE LAYOUT
+   --------------------------- */
+.admin-page {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.admin-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-page-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #1a1410;
+  margin-bottom: 0.5rem;
+}
+
+.admin-page-header p {
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+/* ---------------------------
+   EMPTY STATE
+   --------------------------- */
+.admin-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.admin-empty svg {
+  margin-bottom: 1.5rem;
+  color: #d1d5db;
+}
+
+.admin-empty h3 {
+  font-size: 1.25rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.admin-empty p {
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+/* ---------------------------
+   LOADING & ERROR STATES
+   --------------------------- */
+.admin-loading,
+.admin-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+.admin-error {
+  color: #dc2626;
+}
+
+/* ---------------------------
+   DESKTOP TABLE - 5 COLUMNS
+   --------------------------- */
+.admin-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.admin-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.admin-table thead {
+  background: linear-gradient(135deg, #1a1410 0%, #2d2520 100%);
+  color: white;
+}
+
+.admin-table th {
+  padding: 1.25rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.admin-table th[style*="text-align: center"] {
+  text-align: center;
+}
+
+.admin-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.admin-table td {
+  padding: 1.25rem 1rem;
+  font-size: 0.9375rem;
+  color: #374151;
+  vertical-align: middle;
+}
+
+/* ---------------------------
+   TABLE CELL STYLING
+   --------------------------- */
+.date-cell {
+  color: #6b7280;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.review-preview {
+  color: #374151;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-style: italic;
+}
+
+.stars-container {
+  display: flex;
+  gap: 3px;
+}
+
+/* Status Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.875rem;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-approved {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ---------------------------
+   STATUS TOGGLE
+   --------------------------- */
+.status-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  width: fit-content;
+}
+
+.status-toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-toggle-active {
+  background: #d1fae5;
+  border-color: #10b981;
+}
+
+.status-toggle-active:hover:not(:disabled) {
+  background: #a7f3d0;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.status-toggle-inactive {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.status-toggle-inactive:hover:not(:disabled) {
+  background: #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-switch-inline {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.status-toggle-active .toggle-switch-inline {
+  background: #10b981;
+}
+
+.toggle-dot {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.status-toggle-active .toggle-dot {
+  transform: translateX(20px);
+}
+
+.toggle-text {
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.status-toggle-active .toggle-text {
+  color: #065f46;
+}
+
+.status-toggle-inactive .toggle-text {
+  color: #6b7280;
+}
+
+/* ---------------------------
+   ACTION BUTTONS
+   --------------------------- */
+.action-buttons-centered {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-icon:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-view {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.btn-view:hover {
+  background: #bfdbfe;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-delete {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.btn-delete:hover {
+  background: #fecaca;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Approve Button (Green) */
+.btn-approve {
+  background: #d1fae5;
+  color: #059669;
+}
+.btn-approve:hover {
+  background: #a7f3d0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Reject Button (Orange/Red) */
+.btn-reject {
+  background: #fff7ed;
+  color: #c2410c;
+}
+.btn-reject:hover {
+  background: #ffedd5;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+/* ---------------------------
+   MOBILE CARDS
+   --------------------------- */
+
+/* ---------------------------
+   MOBILE CARDS
+   --------------------------- */
+.mobile-only {
+  display: none;
+}
+
+.review-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.review-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.date-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.card-text {
+  color: #374151;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.card-status {
+  margin-bottom: 1rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-action {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-view-full {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.btn-view-full:hover:not(:disabled) {
+  background: #bfdbfe;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-delete-full {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.btn-delete-full:hover:not(:disabled) {
+  background: #fecaca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Toggle Switch Mobile */
+.toggle-switch-mobile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-switch-mobile.active {
+  background: #d1fae5;
+  border-color: #10b981;
+}
+
+.toggle-slider-mobile {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background: #e5e7eb;
+  border-radius: 13px;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.toggle-switch-mobile.active .toggle-slider-mobile {
+  background: #10b981;
+}
+
+.toggle-slider-mobile::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch-mobile.active .toggle-slider-mobile::after {
+  transform: translateX(22px);
+}
+
+.toggle-label-mobile {
+  font-weight: 600;
+  color: #374151;
+  font-size: 1rem;
+}
+
+.toggle-switch-mobile.active .toggle-label-mobile {
+  color: #065f46;
+}
+
+/* ---------------------------
+   INFINITE SCROLL
+   --------------------------- */
+.scroll-trigger {
+  padding: 2rem;
+  text-align: center;
+}
+
+.loading-more {
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+/* ---------------------------
+   RESPONSIVE - TABLET
+   --------------------------- */
+@media (max-width: 1024px) {
+  .admin-page {
+    padding: 1.5rem;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 1rem 0.75rem;
+  }
+
+  .review-preview {
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* ---------------------------
+   RESPONSIVE - MOBILE
+   --------------------------- */
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 1rem;
+  }
+
+  .admin-page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Hide desktop table, show mobile cards */
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+/* ---------------------------
+   RESPONSIVE - SMALL MOBILE
+   --------------------------- */
+@media (max-width: 480px) {
+  .admin-page {
+    padding: 0.75rem;
+  }
+
+  .admin-page-header h1 {
+    font-size: 1.375rem;
+  }
+
+  .review-card {
+    padding: 1.25rem;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .btn-action {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* ---------------------------
+   PRINT STYLES
+   --------------------------- */
+@media print {
+  .admin-page {
+    padding: 0;
+  }
+  
+  .action-buttons-centered,
+  .status-toggle {
+    display: none !important;
+  }
+  
+  .admin-table {
+    page-break-inside: avoid;
+  }
+}

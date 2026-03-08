@@ -1,0 +1,386 @@
+/* General Layout */
+.admin-leads-page {
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.leads-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+}
+
+/* Search Bar */
+.leads-search-bar {
+  display: flex;
+  flex-wrap: nowrap; /* Forces icon and text to stay on same line */
+  align-items: center;
+  background: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 1rem;
+  width: 100%; /* Ensure it fills container */
+  box-sizing: border-box;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  min-width: 0; /* Critical for flexbox shrinking */
+  margin-left: 0.75rem;
+  font-size: 1rem;
+  background: transparent;
+}
+.search-icon {
+  flex-shrink: 0; /* Prevents icon from being squashed */
+  color: #888;
+}
+
+/* =========================================
+   1) FILTER TOGGLE BUTTON (Always Visible) 
+   ========================================= */
+.filter-toggle-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.filter-toggle-btn:hover {
+  background-color: #f8f9fa;
+  border-color: #d4af37;
+}
+
+.filter-btn-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.filter-arrow {
+  transition: transform 0.3s;
+  color: #666;
+}
+
+.filter-arrow.open {
+  transform: rotate(180deg);
+}
+
+.filter-badge {
+  background-color: #d4af37;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+/* Filter Drawer (Hidden by default) */
+.leads-filters {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.3s;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 0;
+}
+
+.leads-filters.expanded {
+  max-height: 500px; /* Arbitrary large height */
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.filter-dropdowns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.4rem;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+}
+
+.btn-clear-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* =========================================
+   2) STATUS TABS vs MOBILE DROPDOWN
+   ========================================= */
+.status-container {
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile Dropdown (Hidden on Desktop) */
+.status-mobile {
+  display: none; /* Default hidden */
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+/* Mobile Dropdown Fixed Width */
+.status-select-mobile {
+  width: 100%;
+  max-width: 100%; /* Prevents horizontal scroll */
+  box-sizing: border-box;
+  padding: 0.8rem;
+  border: 1px solid #d4af37;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0.5rem;
+  background-color: white;
+}
+
+/* Desktop Tabs (Visible on Desktop) */
+.status-tabs-desktop {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.status-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.status-tab.active {
+  background-color: #d4af37;
+  color: white;
+  border-color: #d4af37;
+}
+
+.status-tab.active .tab-count {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.tab-count {
+  background-color: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666;
+}
+
+/* =========================================
+   3) LEAD CARD (New Layout)
+   ========================================= */
+.leads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.lead-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #f0f0f0;
+}
+
+.lead-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.card-header-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.lead-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.status-badge, .priority-badge {
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Status Colors */
+.status-New { background: #e3f2fd; color: #1976d2; }
+.status-Contacted { background: #fff3e0; color: #f57c00; }
+.status-InProgress { background: #f3e5f5; color: #7b1fa2; }
+.status-Closed { background: #e8f5e9; color: #388e3c; }
+
+/* Priority Colors */
+.priority-High { background: #ffebee; color: #c62828; }
+.priority-Medium { background: #fff8e1; color: #fbc02d; }
+.priority-Low { background: #e0f2f1; color: #00695c; }
+
+/* NEW: Assigned To Row */
+.card-assign-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #555;
+  background-color: #f9f9f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.assign-icon {
+  color: #888;
+}
+
+.assigned-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.unassigned-tag {
+  color: #999;
+  font-style: italic;
+}
+
+.card-avatar {
+  width: 42px;
+  height: 42px;
+  background-color: #d4af37;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Card Body */
+.card-property {
+  background-color: #fcfcfc;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #f0f0f0;
+}
+
+.property-label { font-size: 0.75rem; color: #888; text-transform: uppercase; }
+.property-name { font-weight: 600; color: #333; font-size: 0.95rem; }
+
+.card-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+}
+
+.card-date {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.btn-view-details {
+  background-color: #bfa15f;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* =========================================
+   MEDIA QUERY: MOBILE TABS
+   ========================================= */
+@media (max-width: 768px) {
+  /* Hide Desktop Tabs */
+  .status-tabs-desktop {
+    display: none;
+  }
+  
+  /* Show Mobile Dropdown */
+  .status-mobile {
+    display: block;
+  }
+}

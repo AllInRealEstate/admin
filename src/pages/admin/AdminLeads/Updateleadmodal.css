@@ -1,0 +1,220 @@
+/* =========================================
+   UPDATE LEAD MODAL
+   ========================================= */
+
+.ulm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: ulmFadeIn 0.2s ease;
+}
+
+@keyframes ulmFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ulm-modal {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: ulmSlideUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes ulmSlideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Header ── */
+.ulm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.ulm-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.ulm-header-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #d4af37, #b8962e);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.ulm-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.ulm-subtitle {
+  font-size: 0.75rem;
+  color: #888;
+  margin: 0;
+}
+
+.ulm-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  padding: 0.25rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.ulm-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* ── Body ── */
+.ulm-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ulm-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ulm-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ulm-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ulm-required {
+  color: #dc3545;
+  margin-left: 2px;
+}
+
+.ulm-input {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: #333;
+  background: white;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  font-family: inherit;
+  outline: none;
+}
+
+.ulm-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.ulm-input::placeholder {
+  color: #bbb;
+}
+
+.ulm-textarea {
+  resize: vertical;
+  min-height: 95px;
+  line-height: 1.55;
+}
+
+.ulm-hint {
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+/* ── Footer ── */
+.ulm-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.ulm-btn-cancel {
+  background: white;
+  color: #555;
+  border: 1.5px solid #e5e7eb;
+  padding: 0.5rem 1.25rem;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.ulm-btn-cancel:hover {
+  border-color: #aaa;
+  color: #333;
+}
+
+.ulm-btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #d4af37, #b8962e);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.35);
+  font-family: inherit;
+}
+.ulm-btn-save:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.45);
+}
+.ulm-btn-save:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .ulm-modal   { border-radius: 12px; }
+  .ulm-body    { padding: 1.1rem; }
+  .ulm-row     { grid-template-columns: 1fr; }
+  .ulm-footer  { padding: 1rem 1.1rem; }
+}

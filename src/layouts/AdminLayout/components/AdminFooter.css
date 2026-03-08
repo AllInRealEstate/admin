@@ -1,0 +1,139 @@
+/* =========================================
+   SIDEBAR FOOTER - USER INFO & LOGOUT
+   ========================================= */
+
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.admin-sidebar.collapsed .sidebar-footer {
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+  gap: 1rem;
+}
+
+/* --- USER CARD --- */
+.user-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+/* Avatar Image */
+.mini-avatar-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+}
+
+/* Avatar Text (Initials) */
+.mini-avatar-text {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 1px solid var(--gold);
+  flex-shrink: 0;
+}
+
+/* User Info */
+.mini-user-info {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mini-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-role {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Hide user info when collapsed */
+.admin-sidebar.collapsed .mini-user-info {
+  display: none;
+}
+
+/* --- LOGOUT BUTTON --- */
+.footer-logout {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+  transform: scale(1.05);
+}
+
+.footer-logout:active {
+  transform: scale(0.95);
+}
+
+.footer-logout svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Hide logout button when collapsed */
+.admin-sidebar.collapsed .footer-logout {
+  display: none;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .sidebar-footer {
+    padding: 0.875rem;
+  }
+
+  .mini-avatar-img,
+  .mini-avatar-text {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mini-name {
+    font-size: 0.85rem;
+  }
+
+  .mini-role {
+    font-size: 0.65rem;
+  }
+}

@@ -1,0 +1,635 @@
+/* ==============================================
+   THEME: ELITE DARK PAGE / LUXURY CREAM CARDS
+   ============================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Main Theme Colors */
+  --bg-espresso: #f0f4f8;     /* Page Background (Bright Modern Blue-Gray) */
+  --bg-cream: #F9F7F2;        /* Card Background */
+  --text-dark: #1A1410;       /* Main Text */
+  --text-muted: #888888;
+  
+  /* Gold Accent System */
+  --accent-gold: #D4AF37;
+  --accent-gold-dark: #B8941E;
+  --accent-gold-light: rgba(212, 175, 55, 0.1);
+  
+  /* Additional Accent Colors */
+  --accent-orange: #F97316;
+  --accent-orange-light: rgba(249, 115, 22, 0.1);
+  --accent-green: #10B981;
+  --accent-green-light: rgba(16, 185, 129, 0.1);
+  --accent-blue: #3B82F6;
+  --accent-blue-light: rgba(59, 130, 246, 0.1);
+  
+  /* Shadows & Borders */
+  --shadow-elite: 0 10px 30px rgba(0,0,0,0.15);
+  --border-subtle: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* MAIN STACK CONTAINER */
+.profile-dashboard-stack {
+  min-height: 100vh;
+  background-color: var(--bg-espresso);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ==============================================
+   UNIVERSAL CARD STYLE
+   ============================================== */
+.elite-card {
+  background: var(--bg-espresso);
+  border-radius: 16px;
+  padding: 0;
+  box-shadow: var(--shadow-elite);
+  border: var(--border-subtle);
+  width: 100%;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.elite-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* ==============================================
+   ROW 1 & 3: INFO BARS (Contact & Stats)
+   ============================================== */
+.contact-bar, .stats-bar {
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bar-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.bar-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.bar-icon:hover {
+  transform: scale(1.05);
+}
+
+.gold-bg {
+  background: var(--accent-gold-light);
+  color: var(--accent-gold);
+}
+
+.orange-bg {
+  background: var(--accent-orange-light);
+  color: var(--accent-orange);
+}
+
+.green-bg {
+  background: var(--accent-green-light);
+  color: var(--accent-green);
+}
+
+.blue-bg {
+  background: var(--accent-blue-light);
+  color: var(--accent-blue);
+}
+
+.bar-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.bar-info .lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #999;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.bar-info .val {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+
+.bar-info .sub {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.bar-val-large {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  font-family: 'Cinzel', serif;
+  margin-left: auto;
+  min-width: 60px;
+  text-align: right;
+}
+
+.bar-divider {
+  width: 1px;
+  height: 50px;
+  background: #e0e0e0;
+  margin: 0 1rem;
+}
+
+/* ==============================================
+   ROW 2: IDENTITY CARD (Cream Theme)
+   ============================================== */
+.identity-card-row {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: 250px;
+}
+
+/* Left Section */
+.id-card-left {
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(0,0,0,0.05);
+  background: linear-gradient(to right, #fdfbf7, #f9f7f2);
+  padding: 2rem;
+}
+
+.avatar-section-standard {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.avatar-circle-standard {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 4px;
+  background: #fff;
+  border: 2px solid var(--accent-gold);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-circle-standard.clickable {
+  cursor: pointer;
+}
+
+.avatar-circle-standard.clickable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+}
+
+.avatar-img,
+.avatar-placeholder-standard {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-placeholder-standard {
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--accent-gold);
+  font-family: 'Cinzel', serif;
+}
+
+.status-dot-standard {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: var(--accent-green);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.status-dot-standard.pulsing {
+  animation: pulse 2s infinite;
+}
+
+/* Center Section */
+.id-card-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 4rem;
+}
+
+.brand-badge-small {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.b-gold {
+  color: var(--accent-gold);
+}
+
+.b-dark {
+  color: var(--text-dark);
+}
+
+.user-name-standard {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  margin: 0 0 1rem;
+  color: var(--text-dark);
+  line-height: 1.1;
+}
+
+.last-name-standard {
+  font-weight: 400;
+  color: #555;
+}
+
+.role-status-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.role-badge-standard {
+  background: var(--text-dark);
+  color: var(--accent-gold);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pill-standard {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-green-light);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pulse-indicator-standard {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* Right Section */
+.id-card-right {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  border-left: 1px solid rgba(0,0,0,0.05);
+  background: rgba(0,0,0,0.01);
+  gap: 1.5rem;
+}
+
+.meta-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.m-lbl {
+  color: #999;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.m-val-dark {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-family: 'Cinzel', serif;
+}
+
+.link-green {
+  color: var(--accent-green);
+}
+
+.link-grey {
+  color: #bbb;
+  font-style: italic;
+}
+
+.meta-divider-v-dark {
+  width: 100%;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.action-btn-gold {
+  width: 100%;
+  background: var(--accent-gold);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.action-btn-gold:hover:not(.disabled) {
+  background: var(--accent-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.action-btn-gold.disabled {
+  background: #eee;
+  color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ==============================================
+   ROW 3: HEADER
+   ============================================== */
+.performance-section-full {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.perf-header-simple h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  margin: 0;
+  color: #B8941E;
+  letter-spacing: 1px;
+}
+
+.perf-header-simple p {
+  color: #6B7280;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ==============================================
+   LIGHTBOX
+   ============================================== */
+.image-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+  padding: 2rem;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 12px;
+  border: 3px solid var(--accent-gold);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.close-lightbox {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.close-lightbox:hover {
+  color: var(--accent-gold);
+  transform: rotate(90deg);
+}
+
+/* ==============================================
+   LOADING & ERROR STATES
+   ============================================== */
+.profile-loading {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-espresso);
+}
+
+.spinner-gold {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(212, 175, 55, 0.2);
+  border-top-color: var(--accent-gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.profile-error {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-espresso);
+  color: var(--accent-gold);
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+}
+
+/* ==============================================
+   ANIMATIONS
+   ============================================== */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+@media (max-width: 1100px) {
+  .contact-bar,
+  .stats-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    text-align: left;
+    padding: 2rem;
+  }
+
+  .bar-item {
+    justify-content: flex-start;
+  }
+
+  .bar-divider {
+    display: none;
+  }
+
+  .bar-val-large {
+    margin-left: 0;
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+
+  .identity-card-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .id-card-left,
+  .id-card-center,
+  .id-card-right {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 2rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .id-card-right {
+    border-bottom: none;
+  }
+
+  .id-card-center {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-dashboard-stack {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .contact-bar,
+  .stats-bar {
+    padding: 1.5rem;
+  }
+
+  .perf-header-simple h3 {
+    font-size: 1.5rem;
+  }
+
+  .brand-badge-small {
+    font-size: 2rem;
+  }
+
+  .bar-val-large {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-dashboard-stack {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .contact-bar,
+  .stats-bar,
+  .id-card-left,
+  .id-card-center,
+  .id-card-right {
+    padding: 1rem;
+  }
+
+  .brand-badge-small {
+    font-size: 1.5rem;
+  }
+
+  .user-name-standard {
+    font-size: 1rem;
+  }
+
+  .bar-val-large {
+    font-size: 1.75rem;
+  }
+
+  .perf-header-simple h3 {
+    font-size: 1.25rem;
+  }
+}

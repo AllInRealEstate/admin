@@ -1,0 +1,485 @@
+/* ================= UNIFIED HEADER ================= */
+.unified-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #eee;
+}
+
+/* ================= DESKTOP: SINGLE COMPACT ROW ================= */
+.header-desktop-compact {
+  display: block;
+}
+
+.header-mobile-rows {
+  display: none;
+}
+
+.header-container-compact {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.4rem 1.5rem;
+  min-height: 48px;
+}
+
+.header-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #e0e0e0;
+  flex-shrink: 0;
+}
+
+/* Compact Back Button */
+.btn-back-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: #6c757d;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-back-header:hover {
+  background-color: #f0f0f0;
+  color: #212529;
+}
+
+/* Compact Lead Name */
+.lead-name-header {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+/* Compact Status Badges - Inline */
+.status-badges-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.status-badge-header,
+.priority-badge-header,
+.assignment-badge-header {
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* New: Light Blue/Sky */
+.status-badge-header.status-new {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Contacted: Light Blue/Indigo */
+.status-badge-header.status-contacted {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* In Progress: Light Orange */
+.status-badge-header.status-inprogress {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+/* Closed: Green */
+.status-badge-header.status-closed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Not Interested: Light Red */
+.status-badge-header.status-not-interested {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Ensure consistent padding and font weight for header badges */
+.status-badge-header {
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* Priority Colors - From AdminLeads.css */
+.priority-high {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.priority-medium {
+  background-color: #fff8e1;
+  color: #fbc02d;
+}
+
+.priority-low {
+  background-color: #e0f2f1;
+  color: #00695c;
+}
+
+/* Assignment Badge - Theme Gold - Remove "ASSIGNED:" prefix on desktop */
+.assignment-badge-header {
+  background-color: #fcf8f0;
+  color: #8b7355;
+  border: 1px solid #e6dfd0;
+}
+
+/* Compact Action Buttons - Icon Only on Desktop */
+.action-buttons-grid {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.btn-header-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  padding: 0;
+  background-color: #fff;
+}
+
+.btn-header-action span {
+  display: none; /* Hide text labels on desktop */
+}
+
+.btn-email-header,
+.btn-phone-header {
+  color: #495057;
+}
+
+.btn-email-header:hover,
+.btn-phone-header:hover {
+  background-color: #f0f0f0;
+  color: #212529;
+  border-color: #999;
+}
+
+.btn-manage-header {
+  width: auto;
+  padding: 0 0.4rem;
+  color: #666;
+}
+
+.btn-manage-header:hover {
+  background-color: #f8f9fa;
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+.btn-manage-header.active {
+  background-color: #d4af37;
+  color: white;
+  border-color: #d4af37;
+}
+
+.btn-delete-header {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-delete-header:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* ================= COLLAPSIBLE MANAGEMENT PANEL ================= */
+.management-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: white;
+  border-top: 1px solid #eee;
+}
+
+.management-panel.expanded {
+  max-height: 300px;
+}
+
+.management-panel-content {
+  padding: 0.75rem 1.5rem;
+  background-color: #fafafa;
+  border-bottom: 1px solid #eee;
+}
+
+.management-panel:not(.expanded) .management-panel-content {
+  padding: 0;
+}
+
+/* Panel Header */
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.panel-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #d4af37;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.panel-header h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* Management Controls Grid - Horizontal on Desktop */
+.management-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.control-group label {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.control-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.control-select:focus {
+  border-color: #d4af37;
+  outline: none;
+}
+
+.control-select:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Current Assignment Display - Compact */
+.current-assignment-box {
+  padding: 0.5rem 0.75rem;
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #eee;
+}
+
+.assignment-avatar {
+  width: 24px;
+  height: 24px;
+  background-color: #d4af37;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.assignment-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.assignment-label {
+  font-size: 0.7rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.assignment-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+/* ================= RESPONSIVE - MOBILE/TABLET ================= */
+@media (max-width: 1024px) {
+  /* Show mobile layout, hide desktop */
+  .header-desktop-compact {
+    display: none;
+  }
+
+  .header-mobile-rows {
+    display: block;
+  }
+
+  /* Mobile Row Styles */
+  .header-row-1 {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+    background-color: #fafafa;
+  }
+
+  .header-row-1 .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .header-row-2 {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .header-row-2 .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .header-row-2 .status-badges-container {
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .header-row-2 .status-badge-header,
+  .header-row-2 .priority-badge-header,
+  .header-row-2 .assignment-badge-header {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.7rem;
+  }
+
+  .header-row-3 {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .header-row-3 .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .header-row-3 .action-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .header-row-3 .btn-header-action {
+    width: auto;
+    height: auto;
+    padding: 0.6rem 1rem;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .header-row-3 .btn-header-action span {
+    display: inline; /* Show text on mobile */
+    font-size: 0.85rem;
+  }
+
+  .header-row-3 .btn-manage-header {
+    padding: 0.6rem 1rem;
+  }
+
+  .header-spacer {
+    width: 100px;
+  }
+
+  .lead-name-header {
+    font-size: 1.1rem;
+  }
+
+  /* Management Panel on Mobile */
+  .management-controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-header {
+    margin-bottom: 0.75rem;
+  }
+
+  .current-assignment-box {
+    margin-top: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-row-1 .header-container {
+    flex-wrap: wrap;
+  }
+
+  .lead-name-header {
+    font-size: 0.95rem;
+  }
+
+  .header-row-2 .status-badge-header,
+  .header-row-2 .priority-badge-header,
+  .header-row-2 .assignment-badge-header {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .header-row-3 .btn-header-action {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+  }
+}

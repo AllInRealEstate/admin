@@ -1,0 +1,220 @@
+/* ================= LEAD DETAILS CONTENT ================= */
+.lead-details-content {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  padding: 1.25rem;
+  overflow: hidden; 
+}
+
+/* ================= HEADER SECTION ================= */
+.details-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  color: #888;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.details-section-header svg {
+  color: #d4af37;
+}
+
+/* ================= CLIENT PROFILE ================= */
+.client-header-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #f5f5f5;
+  flex-shrink: 0;
+}
+
+.client-avatar-circle {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #d4af37 0%, #c5a47e 100%);
+  color: white; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+  border: 2px solid white;
+}
+
+.client-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.client-full-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin: 0 0 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.client-submitted-date {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #999;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* ================= INFO GRID ================= */
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 0.75rem; 
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.info-card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  border: 1px solid transparent;
+  transition: background-color 0.2s;
+  position: relative; 
+  cursor: default;
+}
+
+.info-card:hover {
+  background-color: white;
+  border-color: #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+/* Gold Background + White Icon */
+.info-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #d4af37 0%, #c5a47e 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(212, 175, 55, 0.25);
+  color: #ffffff; 
+  border: none;
+}
+
+.info-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.info-label-text {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #a0a0a0;
+  margin-bottom: 2px;
+}
+
+.info-value-text {
+  font-size: 0.8rem;
+  color: #2c2c2c;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inquiry-type-badge {
+  color: #1a1a1a;
+  background: #e9ecef;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.7rem;
+}
+
+/* ================= MESSAGE SECTION ================= */
+.original-inquiry-section {
+  margin-top: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #e0e0e0;
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  min-height: 0; 
+}
+
+.inquiry-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.inquiry-header h4 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.inquiry-message-box {
+  background-color: #fffcf5; 
+  border: 1px solid #f0e6d2;
+  color: #5a5a5a;
+  padding: 1rem;
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  flex: 1; 
+  overflow-y: auto; 
+}
+
+.inquiry-message-box::-webkit-scrollbar { width: 4px; }
+.inquiry-message-box::-webkit-scrollbar-track { background: transparent; }
+.inquiry-message-box::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 10px; }
+.inquiry-message-box::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .lead-details-content { height: auto; overflow: visible; }
+  .contact-info-grid { grid-template-columns: 1fr 1fr; }
+  .inquiry-message-box { height: auto; max-height: 200px; }
+}
+
+@media (max-width: 480px) {
+  .contact-info-grid { grid-template-columns: 1fr; }
+}

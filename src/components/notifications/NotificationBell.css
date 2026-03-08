@@ -1,0 +1,86 @@
+/* Notification Bell Container */
+.notification-bell-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Bell Button */
+.notification-bell-button {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-bell-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.notification-bell-button:focus {
+  outline: 2px solid #d4a574;
+  outline-offset: 2px;
+}
+
+/* Bell Icon */
+.notification-bell-icon {
+  color: #333;
+  width: 24px;
+  height: 24px;
+}
+
+/* Unread Badge */
+.notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown Wrapper */
+.notification-dropdown-wrapper {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 9999;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notification-dropdown-wrapper {
+    position: fixed;
+    top: 60px;
+    right: 8px;
+    left: 8px;
+    max-width: none;
+  }
+}

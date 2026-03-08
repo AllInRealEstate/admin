@@ -1,0 +1,299 @@
+/* =========================================
+   NOTIFICATION DROPDOWN - BULK MANAGEMENT
+   ========================================= */
+
+/* Dropdown Container */
+.notification-dropdown {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  width: 420px;
+  max-height: 650px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* =========================================
+   HEADER WRAPPER (Two Rows)
+   ========================================= */
+.notification-header-wrapper {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* --- ROW 1: Title & Close --- */
+.notification-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px 20px;
+}
+
+.notification-dropdown-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.notification-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.notification-close-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111827;
+}
+
+/* --- ROW 2: Action Toolbar --- */
+.notification-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 14px 20px;
+  gap: 12px;
+}
+
+/* Action Group Right (for right-aligned buttons) */
+.action-group-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+/* --- ACTION BUTTONS --- */
+.action-link {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.action-link.primary {
+  color: #d4a574;
+}
+
+.action-link.primary:hover {
+  background: rgba(212, 165, 116, 0.1);
+  color: #b8935f;
+}
+
+.action-link.secondary {
+  color: #6b7280;
+}
+
+.action-link.secondary:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111827;
+}
+
+.action-link.danger {
+  color: #ef4444;
+}
+
+.action-link.danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+/* --- ICON BUTTONS (Selection Mode) --- */
+.action-icon-btn {
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.action-icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.action-icon-btn.check {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.action-icon-btn.check:hover:not(:disabled) {
+  background: #10b981;
+  color: white;
+}
+
+.action-icon-btn.trash {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.action-icon-btn.trash:hover:not(:disabled) {
+  background: #ef4444;
+  color: white;
+}
+
+/* =========================================
+   BODY
+   ========================================= */
+.notification-dropdown-body {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 520px;
+}
+
+/* Scrollbar Styling */
+.notification-dropdown-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-dropdown-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.notification-dropdown-body::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.notification-dropdown-body::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Notification List */
+.notification-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   LOADING STATE
+   ========================================= */
+.notification-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  color: #6b7280;
+}
+
+.notification-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #d4a574;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 14px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.notification-loading p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+.notification-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.notification-empty svg {
+  margin-bottom: 16px;
+  opacity: 0.5;
+  color: #d1d5db;
+}
+
+.notification-empty p {
+  margin: 0;
+  font-size: 15px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* =========================================
+   RESPONSIVE - MOBILE
+   ========================================= */
+@media (max-width: 768px) {
+  .notification-dropdown {
+    width: 100%;
+    max-width: none;
+    border-radius: 12px 12px 0 0;
+    max-height: 75vh;
+  }
+
+  .notification-header-top {
+    padding: 14px 16px 10px 16px;
+  }
+
+  .notification-dropdown-title {
+    font-size: 17px;
+  }
+
+  .notification-header-actions {
+    padding: 0 16px 12px 16px;
+    gap: 8px;
+  }
+
+  .action-link {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .action-icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .notification-dropdown-body {
+    max-height: calc(75vh - 110px);
+  }
+}
+
+/* =========================================
+   FOCUS STATES (Accessibility)
+   ========================================= */
+.notification-close-btn:focus-visible,
+.action-link:focus-visible,
+.action-icon-btn:focus-visible {
+  outline: 2px solid #d4a574;
+  outline-offset: 2px;
+}

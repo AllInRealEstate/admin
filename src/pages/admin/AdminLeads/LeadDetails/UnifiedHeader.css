@@ -1,0 +1,392 @@
+/* ============================================================
+   UNIFIED HEADER: LEAD DESIGNER SPEC
+   ============================================================ */
+:root {
+  --header-bg: #ffffff;
+  --header-border: #e2e8f0;
+  --gold-accent: #d4af37;
+  --gold-hover: #bfa15f;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --transition-speed: 0.25s;
+  --header-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+}
+
+.unified-header {
+  position: sticky;
+  top: 0;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: var(--header-shadow);
+  width: 100%;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ================= DESKTOP COMPACT ROW ================= */
+.header-desktop-compact {
+  display: block;
+}
+
+.header-container-compact {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  gap: 1.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--header-border);
+}
+
+.lead-name-header {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ================= BADGE SYSTEM ================= */
+.status-badges-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.status-badge-header,
+.priority-badge-header,
+.assignment-badge-header {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* Status Colors (Lead Designer Palette) */
+.status-new { background: #e0f2fe; color: #0369a1; }
+.status-contacted { background: #e0e7ff; color: #3730a3; }
+.status-inprogress { background: #ffedd5; color: #9a3412; }
+.status-closed { background: #dcfce7; color: #166534; }
+.status-not-interested { background: #fee2e2; color: #991b1b; }
+
+/* Priority Colors */
+.priority-high { background: #fef2f2; color: #ef4444; border: 1px solid #fee2e2; }
+.priority-medium { background: #fffbeb; color: #d97706; border: 1px solid #fef3c7; }
+.priority-low { background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; }
+
+.assignment-badge-header {
+  background: #f1f5f9;
+  color: var(--text-muted);
+  border: 1px dashed #cbd5e1;
+}
+
+/* ================= ACTION BUTTONS ================= */
+.action-buttons-grid {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-header-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--header-border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+}
+
+.btn-header-action:hover {
+  border-color: var(--gold-accent);
+  color: var(--gold-accent);
+  background: #fffcf0;
+}
+
+.btn-header-action.active-toggle {
+  background: #f8fafc !important;
+  border-color: var(--gold-accent) !important;
+  color: var(--gold-accent) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-manage-header {
+  width: auto !important;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background: var(--text-main) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.btn-manage-header.active {
+  background: var(--gold-accent) !important;
+}
+
+.btn-delete-header:hover {
+  background: #fef2f2 !important;
+  border-color: #ef4444 !important;
+  color: #ef4444 !important;
+}
+
+.btn-back-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.btn-back-header:hover {
+  color: var(--gold-accent);
+}
+
+/* ================= PAGINATION CONTROLS ================= */
+.header-pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f8fafc;
+  padding: 0.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--header-border);
+}
+
+.btn-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: white;
+  border-radius: 6px;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.btn-pagination:hover:not(:disabled) {
+  color: var(--gold-accent);
+  border-color: var(--gold-accent);
+  background: #fffcf0;
+}
+
+.btn-pagination:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: transparent;
+  box-shadow: none;
+}
+
+.pagination-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 45px;
+  text-align: center;
+}
+
+/* ================= MOBILE LAYOUT (3 ROWS) ================= */
+.header-mobile-rows {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .header-desktop-compact { display: none; }
+  .header-mobile-rows { display: block; }
+
+  .header-row-1, .header-row-2, .header-row-3 {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--header-border);
+  }
+
+.header-row-1 { background: #f8fafc; }
+  .header-row-1 .header-container { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  
+  .mobile-pagination {
+    padding: 0.15rem;
+    gap: 0.25rem;
+  }
+  .mobile-pagination .btn-pagination {
+    width: 24px;
+    height: 24px;
+  }
+  .mobile-pagination .pagination-text {
+    min-width: 35px;
+    font-size: 0.7rem;
+  }
+
+  .header-row-2 .status-badges-container {
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none; /* Hide scrollbar for clean design */
+  }
+  .header-row-2 .status-badges-container::-webkit-scrollbar { display: none; }
+
+  .header-row-3 .action-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+    width: 100%;
+  }
+
+  .header-row-3 .btn-header-action {
+    width: 100%;
+    height: 44px; /* Touch-friendly */
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .header-row-3 .btn-header-action span {
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
+}
+
+/* ================= MANAGEMENT PANEL ================= */
+.management-panel {
+  max-height: 0;
+  overflow: hidden;
+  background: #f8fafc;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 0 solid var(--header-border);
+}
+
+.management-panel.expanded {
+  max-height: 500px;
+  border-bottom-width: 1px;
+}
+
+.management-panel-content {
+  padding: 2rem 0;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-main);
+}
+
+.panel-icon {
+  background: var(--gold-accent);
+  color: white;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.management-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.control-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.control-select {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--header-border);
+  background: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.control-select:focus {
+  border-color: var(--gold-accent);
+}
+
+.current-assignment-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--header-border);
+}
+
+.assignment-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--gold-accent);
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.assignment-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.assignment-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.assignment-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .management-controls-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

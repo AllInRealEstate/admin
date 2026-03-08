@@ -1,0 +1,244 @@
+/* =========================================
+   ADD LEAD MODAL (Matches Update Modal UI)
+   ========================================= */
+
+.alm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: almFadeIn 0.2s ease;
+}
+
+@keyframes almFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.alm-modal {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 580px; /* Slightly wider to fit the extra select dropdowns nicely */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: almSlideUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes almSlideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Header ── */
+.alm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.alm-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.alm-header-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #d4af37, #b8962e);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.alm-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.alm-subtitle {
+  font-size: 0.75rem;
+  color: #888;
+  margin: 0;
+}
+
+.alm-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  padding: 0.25rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.alm-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* ── Body ── */
+.alm-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.alm-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.alm-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.alm-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.alm-required {
+  color: #dc3545;
+  margin-left: 2px;
+}
+
+.alm-input {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: #333;
+  background: white;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  font-family: inherit;
+  outline: none;
+}
+
+/* Applies to select dropdowns specifically */
+select.alm-input {
+  cursor: pointer;
+  appearance: auto; /* Uses native clean dropdown */
+}
+
+.alm-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.alm-input.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.alm-input::placeholder {
+  color: #bbb;
+}
+
+.alm-textarea {
+  resize: vertical;
+  min-height: 95px;
+  line-height: 1.55;
+}
+
+.alm-error-msg {
+  color: #ef4444;
+  font-size: 0.7rem;
+  margin-top: 0.1rem;
+}
+
+.alm-section-divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 0.25rem 0;
+}
+
+/* ── Footer ── */
+.alm-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.alm-btn-cancel {
+  background: white;
+  color: #555;
+  border: 1.5px solid #e5e7eb;
+  padding: 0.5rem 1.25rem;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.alm-btn-cancel:hover {
+  border-color: #aaa;
+  color: #333;
+}
+
+.alm-btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #d4af37, #b8962e);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.35);
+  font-family: inherit;
+}
+.alm-btn-save:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.45);
+}
+.alm-btn-save:active:not(:disabled) {
+  transform: translateY(0);
+}
+.alm-btn-save:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .alm-modal   { border-radius: 12px; }
+  .alm-body    { padding: 1.1rem; gap: 1rem; }
+  .alm-row     { grid-template-columns: 1fr; }
+  .alm-footer  { padding: 1rem 1.1rem; }
+}

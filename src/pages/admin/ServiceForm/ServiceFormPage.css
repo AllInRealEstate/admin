@@ -1,0 +1,118 @@
+/* src/pages/admin/ServiceFormPage/ServiceFormPage.css */
+
+.service-form-page {
+  min-height: 100vh;
+  background: #f9fafb;
+  padding: 2rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1.5rem;
+}
+
+.back-button:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.form-page-header {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+.form-page-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #1a1410;
+  margin-bottom: 0.5rem;
+}
+
+.form-page-header p {
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+.admin-form-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #6b7280;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #f3f4f6;
+  border-top-color: #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-state p {
+  font-size: 0.9375rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-form-page {
+    padding: 1.5rem;
+  }
+
+  .form-page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-page-header p {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-form-page {
+    padding: 1rem;
+  }
+
+  .back-button {
+    font-size: 0.8125rem;
+    padding: 0.5rem 0.875rem;
+  }
+
+  .form-page-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-page-header h1 {
+    font-size: 1.375rem;
+  }
+}

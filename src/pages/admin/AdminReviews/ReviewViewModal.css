@@ -1,0 +1,458 @@
+/* ============================================================
+   MASTERPIECE REVIEW MODAL (LUXURY EDITORIAL STYLE)
+   ============================================================ */
+
+/* Overlay - Darker and blurrier for focus */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+/* Main Container - The "Card" */
+.modal-masterpiece {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  height: 550px; /* Fixed elegant height */
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- LEFT SIDEBAR (Metadata) --- */
+.masterpiece-sidebar {
+  width: 320px; /* Fixed width */
+  background: #f8f8f8; /* Very subtle gray */
+  border-right: 1px solid #eaeaea;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* Status Badge - Pill Style */
+.mp-status-badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.mp-status-badge.pending { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+.mp-status-badge.approved { background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7; }
+.mp-status-badge.rejected { background: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
+
+.dot {
+  width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+}
+
+/* Meta Group */
+.mp-meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1; /* Pushes toggle to bottom */
+}
+
+.mp-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mp-meta-item label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.mp-value {
+  font-size: 1rem;
+  color: #111827;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.author-value {
+  font-family: 'Cinzel', serif; /* Luxury font for names */
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.mp-stars {
+  display: flex;
+  gap: 4px;
+}
+
+/* Toggle Switch - Custom Design */
+.mp-toggle-container {
+  margin-top: auto;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+.mp-toggle-container label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #9ca3af;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+/* --- TOGGLE BUTTON (Red/Green Logic) --- */
+.mp-toggle-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  /* Default: Inactive (Red) */
+  background: #fee2e2; 
+  border: 1px solid #ef4444;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  height: 40px;
+  justify-content: flex-start; /* Circle on left */
+}
+
+.mp-toggle-btn.active {
+  /* Active: Green */
+  background: #d1fae5;
+  border-color: #10b981;
+  justify-content: flex-end; /* Circle on right */
+}
+
+.mp-toggle-circle {
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.mp-toggle-btn.active .mp-toggle-circle {
+  transform: translateX(calc(100% + 190px)); /* Move to end - adjusting based on width */
+}
+/* Re-adjusting toggle logic visually to be simpler */
+.mp-toggle-btn {
+  justify-content: flex-start;
+}
+.mp-toggle-btn.active {
+  justify-content: flex-end;
+}
+.mp-toggle-btn.active .mp-toggle-circle {
+  transform: none;
+}
+
+.mp-toggle-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: color 0.3s;
+  color: #991b1b; /* Red Text */
+}
+
+.mp-toggle-btn.active .mp-toggle-label {
+  color: #065f46; /* Green Text */
+}
+
+/* --- RIGHT MAIN (Content) --- */
+.masterpiece-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Header */
+.mp-header {
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mp-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #111827;
+  margin: 0;
+}
+
+.mp-close-icon {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.mp-close-icon:hover { color: #000; }
+
+/* Tabs */
+.mp-tabs {
+  display: flex;
+  gap: 1.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mp-tab {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  cursor: pointer;
+  padding-bottom: 4px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.mp-tab.active {
+  color: #d4af37; /* Gold */
+  font-weight: 600;
+}
+
+.mp-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #d4af37;
+}
+
+/* Content Body */
+.mp-content-body {
+  padding: 2.5rem 4rem; /* Generous padding */
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center text vertically if short */
+}
+
+/* The Quote Icon */
+.mp-quote-icon {
+  font-size: 4rem;
+  color: #f3f4f6;
+  font-family: serif;
+  line-height: 1;
+  margin-bottom: -1rem;
+}
+
+.mp-review-text {
+  font-family: 'Playfair Display', Georgia, serif; /* Elegant font */
+  font-size: 1.35rem; /* Large text */
+  line-height: 1.6;
+  color: #374151;
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom Scrollbar - The "Invisible" Logic */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+.custom-scroll:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.mp-footer {
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* --- DELETE BUTTON (Hover Effect) --- */
+.mp-btn-delete {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  /* ... previous styles ... */
+  transition: all 0.2s ease;
+  margin-right: auto; /* Push to left */
+}
+
+.mp-btn-delete:hover {
+  background: #fef2f2;
+  color: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* Footer Wrapper */
+.mp-footer-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Modal Approve Button */
+.mp-btn-approve-action {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.mp-btn-approve-action:hover {
+  background: #059669;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Modal Reject Button */
+.mp-btn-reject-action {
+  background: transparent;
+  color: #b91c1c;
+  border: 1px solid #fee2e2;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.mp-btn-reject-action:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+/* --- DONE BUTTON (Gold) --- */
+.mp-btn-done {
+  background: #d4af37; /* Luxury Gold */
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(212, 175, 55, 0.2);
+}
+
+.mp-btn-done:hover {
+  background: #b4942b; /* Darker Gold */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* --- DELETE BUTTON (Hover Effect) --- */
+.mp-btn-delete {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  /* ... previous styles ... */
+  transition: all 0.2s ease;
+}
+
+.mp-btn-delete:hover {
+  background: #fef2f2;
+  color: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   RESPONSIVENESS (Elegant Stacking)
+   ============================================================ */
+@media (max-width: 850px) {
+  .modal-masterpiece {
+    flex-direction: column;
+    height: auto;
+    max-height: 90vh;
+    width: 95%;
+  }
+
+  .masterpiece-sidebar {
+    width: 100%;
+    padding: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .mp-status-badge { margin-bottom: 0; }
+  
+  .mp-meta-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .mp-toggle-container {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+    margin-left: auto; /* Push to right */
+    min-width: 120px;
+  }
+
+  .mp-content-body {
+    padding: 2rem;
+  }
+  
+  .mp-review-text { font-size: 1.1rem; }
+  .mp-tabs { position: static; transform: none; order: 2; margin-top: 0.5rem; }
+  .mp-header { flex-wrap: wrap; gap: 1rem; }
+}
+
+@media (max-width: 500px) {
+  .mp-meta-group { gap: 1rem; }
+  .mp-tabs { width: 100%; justify-content: center; border-top: 1px solid #f3f4f6; padding-top: 1rem; }
+  .mp-toggle-container { width: 100%; border-top: 1px solid #e5e7eb; padding-top: 1rem; margin-top: 1rem; }
+}

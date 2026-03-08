@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FAF8F3; /* Cream background */
+  color: #2C2416; /* Deep brown text */
+  overflow-x: hidden;
+}
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+[lang="he"] body {
+  font-family: 'Heebo', sans-serif;
+}
+
+[lang="ar"] body {
+  font-family: 'Cairo', sans-serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-luxury-gold text-white px-8 py-4 rounded-lg 
+           font-accent font-semibold hover:bg-luxury-gold-light 
+           transition-all duration-300 hover:scale-105 shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-luxury-gold text-luxury-gold px-8 py-4 rounded-lg 
+           font-accent font-semibold hover:bg-luxury-gold hover:text-white 
+           transition-all duration-300 shadow-md;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-500 hover:scale-105 hover:shadow-2xl;
+  }
+  
+  .gold-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #E8C547 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card backgrounds */
+  .card-bg {
+    @apply bg-luxury-beige border border-luxury-gold/20;
+  }
+
+  /* Subtle shadows for depth */
+  .luxury-shadow {
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F1E8; /* Beige */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37; /* Gold */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E8C547; /* Light gold */
+}
+
+/* Add to src/index.css */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Required Leaflet CSS */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,140 @@
+/* =========================================
+   ADMIN LAYOUT - MAIN ORCHESTRATOR
+   ========================================= */
+
+/* --- ROOT VARIABLES --- */
+:root {
+  --admin-bg: #f3f4f6;
+  --sidebar-bg: #1a1410;
+  --sidebar-w: 260px;
+  --sidebar-w-collapsed: 100px;
+  --gold: #c19a5b;
+  --gold-dim: rgba(193, 154, 91, 0.15);
+  --text-light: #e5e7eb;
+  --text-dim: #9ca3af;
+  --header-h-mobile: 64px;
+}
+
+/* Layout Container */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--admin-bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   MAIN CONTENT AREA
+   ========================================= */
+.admin-main {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  padding: 2rem;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: calc(100% - var(--sidebar-w));
+  min-height: 100vh;
+}
+
+/* Expanded state (when sidebar is collapsed) */
+.admin-main.expanded {
+  margin-left: var(--sidebar-w-collapsed);
+  width: calc(100% - var(--sidebar-w-collapsed));
+}
+
+/* =========================================
+   DESKTOP - NO HEADER
+   ========================================= */
+@media (min-width: 769px) {
+  .admin-main {
+    /* No padding-top needed on desktop */
+    padding: 2rem;
+  }
+
+  .admin-main.expanded {
+    margin-left: var(--sidebar-w-collapsed);
+  }
+}
+
+/* =========================================
+   RESPONSIVE / MOBILE
+   ========================================= */
+@media (max-width: 768px) {
+  /* Reset Main Margin on Mobile */
+  .admin-main,
+  .admin-main.expanded {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem;
+    padding-top: calc(var(--header-h-mobile) + 1rem);
+  }
+
+  /* Hide Desktop Elements */
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+
+/* Search Bar (if used) */
+.search-bar-container {
+  margin-bottom: 2rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+  max-width: 500px;
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 3rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s;
+  background: white;
+}
+
+.search-input-wrapper input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-dim);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.clear-search {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.clear-search:hover {
+  color: #6b7280;
+}
+
+/* =========================================
+   GLOBAL SCROLLBAR HIDING
+   ========================================= */
+.admin-layout,
+.admin-sidebar,
+.sidebar-nav {
+  overflow-x: hidden !important;
+}
