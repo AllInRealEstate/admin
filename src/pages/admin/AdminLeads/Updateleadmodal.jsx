@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PenLine, X, Save } from "lucide-react";
-import "./UpdateLeadModal.css";
+import "./Updateleadmodal.css"
 
 const UpdateLeadModal = ({ lead, onClose, onSave }) => {
   // FIX 1: Strip out "Unknown" so it doesn't break the email validation
