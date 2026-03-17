@@ -70,7 +70,7 @@ const LeadsHeader = ({
             <input
               type="text"
               className="lh-search-input"
-              placeholder="Search by name, email or phone..."
+              placeholder="Search by name, phone, email, or notes..."
               value={filters.search}
               onChange={(e) => handleFilterChange("search", e.target.value)}
             />
